@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/shyiko/jabba/cfg"
 	"github.com/shyiko/jabba/semver"
 )
 
@@ -17,11 +18,11 @@ type byDistribution map[string]map[string]string
 
 func LsRemote(os, arch string) (map[*semver.Version]string, error) {
 	//读取远程配置
-	// cnt, err := fetch(cfg.Index())
+	cnt, err := fetch(cfg.Index())
 	//开发时,读取本地配置(读取的是当前文件夹的index.json)
 	// cnt, err := ioutil.ReadFile("../index.json")
 	//打包时,读取本地配置(读取的是当前文件夹的index.json)
-	cnt, err := ioutil.ReadFile("index.json")
+	// cnt, err := ioutil.ReadFile("index.json")
 	if err != nil {
 		return nil, err
 	}
